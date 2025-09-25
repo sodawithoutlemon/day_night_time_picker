@@ -62,6 +62,12 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
           min = 0; // normal başlasın
         }
       }
+      
+      if (timeState.time.minute < min) {
+        timeState.time = timeState.time.replacing(minute: min.round());
+      } else if (timeState.time.minute > max) {
+        timeState.time = timeState.time.replacing(minute: max.round());
+      }
     }
 
     int minDiff = (max - min).round();
