@@ -87,11 +87,16 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
 
     Orientation currentOrientation = MediaQuery.of(context).orientation;
 
-    double value = timeState.time.hour.roundToDouble();
-    if (timeState.selected == SelectedInput.MINUTE) {
+    double value;
+    if (timeState.selected == SelectedInput.HOUR) {
+      value = timeState.time.hour.roundToDouble();
+      value = value.clamp(min, max);
+    } else if (timeState.selected == SelectedInput.MINUTE) {
       value = timeState.time.minute.roundToDouble();
-    } else if (timeState.selected == SelectedInput.SECOND) {
+      value = value.clamp(min, max);
+    } else { // SECOND
       value = timeState.time.second.roundToDouble();
+      value = value.clamp(min, max);
     }
 
     return Center(
