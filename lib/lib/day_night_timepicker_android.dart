@@ -24,6 +24,9 @@ class DayNightTimePickerAndroid extends StatefulWidget {
   final TimeOfDay sunrise;
   final TimeOfDay sunset;
   final int duskSpanInMinutes;
+  final int? specialHour;
+  final int? specialMinute;
+
 
   @override
   DayNightTimePickerAndroidState createState() =>
