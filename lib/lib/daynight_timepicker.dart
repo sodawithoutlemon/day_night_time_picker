@@ -322,6 +322,8 @@ dynamic showPicker({
           child: DayNightTimePickerAndroid(
             sunrise: sunrise,
             sunset: sunset,
+            specialHour: specialHour, 
+            specialMinute: specialMinute,
             duskSpanInMinutes: duskSpanInMinutes,
           ),
         );
