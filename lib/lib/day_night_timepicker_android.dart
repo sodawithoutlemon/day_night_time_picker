@@ -18,6 +18,8 @@ class DayNightTimePickerAndroid extends StatefulWidget {
     required this.sunrise,
     required this.sunset,
     required this.duskSpanInMinutes,
+    this.specialHour,
+    this.specialMinute,
   }) : super(key: key);
   final TimeOfDay sunrise;
   final TimeOfDay sunset;
@@ -44,6 +46,20 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
         getMin(timeState.widget.minMinute, timeState.widget.minuteInterval);
     double max =
         getMax(timeState.widget.maxMinute, timeState.widget.minuteInterval);
+    
+    if (timeState.selected == SelectedInput.MINUTE) {
+      final currentHour = timeState.time.hour;
+      final specialHour = timeState.widget.specialHour;
+      final specialMinute = timeState.widget.specialMinute;
+    
+      if (specialHour != null && specialMinute != null) {
+        if (currentHour == specialHour) {
+          min = specialMinute.toDouble();
+        } else if (currentHour > specialHour) {
+          min = 0; // normal başlasın
+        }
+      }
+    }
 
     int minDiff = (max - min).round();
     int divisions = getDivisions(minDiff, timeState.widget.minuteInterval);
