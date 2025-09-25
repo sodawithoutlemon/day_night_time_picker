@@ -13,7 +13,8 @@ class TimeModelBinding extends StatefulWidget {
 
   /// _`Optional`_ Return the new time the user picked as [DateTime].
   final void Function(DateTime)? onChangeDateTime;
-
+  final int? specialHour;
+  final int? specialMinute;
   /// Callback for the Cancel button
   final void Function()? onCancel;
 
@@ -207,6 +208,8 @@ class TimeModelBinding extends StatefulWidget {
     this.minSecond,
     this.hourLabel,
     this.minuteLabel,
+    this.specialHour,
+    this.specialMinute,
     this.secondLabel,
     this.amLabel = 'am',
     this.pmLabel = 'pm',
